@@ -1,114 +1,111 @@
-# AdvanceDBM_Project
-1. # Project: Disease Prediction and Analysis Using Big Data and Machine Learning
+# 🌟 Disease Prediction and Analytics Project 🚀
 
-## Overview
-This project leverages Big Data technologies and machine learning techniques to predict diseases based on symptoms and provide analytical insights using visualizations. Built on Hadoop’s HDFS and PySpark, the project demonstrates the integration of distributed data processing with advanced machine learning workflows.
+Welcome to **Disease Prediction and Analytics**, where **Big Data** meets **Machine Learning** to improve healthcare one prediction at a time. 🩺📊 Buckle up as we dive into how this project helps predict diseases and uncover visual insights—all powered by **Hadoop**, **PySpark**, and advanced ML techniques! ⚡
 
 ---
 
-## Workflow
-
-### 1. Data Preparation
-1. **Dataset Collection**:
-   - Data includes attributes like Age, Gender, City, Symptoms, and the corresponding Disease.
-2. **Storage**:
-   - The dataset is uploaded and stored in HDFS for distributed processing.
-3. **Access**:
-   - PySpark is used to read and manipulate the dataset directly from HDFS.
-
-### 2. Preprocessing
-1. **Handling Missing Values**: Dropped rows with missing data.
-2. **Encoding**:
-   - Categorical variables like Gender, City, and Disease are encoded using LabelEncoder.
-3. **Scaling**:
-   - Numerical features such as Age are scaled using StandardScaler.
-4. **Dimensionality Reduction**:
-   - PCA is applied to reduce the feature space to the top 10 principal components for faster computation.
-
-### 3. Model Training
-1. **Model Selection**:
-   - A Stochastic Gradient Descent (SGD) classifier is used for its efficiency in large datasets.
-2. **Training Process**:
-   - The model is trained using the preprocessed dataset.
-3. **Evaluation**:
-   - Accuracy and classification reports are generated to validate model performance.
-
-### 4. Model Saving
-- The trained model is saved for reuse, enabling predictions on new data without retraining.
-
-### 5. Prediction
-1. **New Dataset**:
-   - A new dataset with symptom attributes is uploaded.
-   - The Disease column is removed before prediction.
-2. **Loading Model**:
-   - The saved model is loaded using joblib.
-3. **Prediction**:
-   - Diseases for the new dataset are predicted and saved for analysis.
-
-### 6. Analytics and Visual Insights
-1. **Objectives**:
-   - Derive insights from the predicted results.
-2. **Visualizations**:
-   - Age group analysis: Disease trends across different age groups.
-   - Disease distribution by city: Identify cities with higher cases of specific diseases.
-   - Gender-based disease trends: Analyze disease prevalence by gender.
-   - Symptom correlation: Heatmaps to show symptom-disease relationships.
-   - Other custom visualizations.
-3. **Tools**:
-   - Matplotlib and Seaborn for plotting visualizations.
-
-### 7. Challenges
-1. **Overfitting**:
-   - Addressed using regularization and class balancing.
-2. **Resource Limitations**:
-   - Leveraged Hadoop’s distributed storage and PySpark’s processing capabilities.
-3. **Model Training**:
-   - Managed large-scale data processing with Spark.
-
-### 8. Conclusion
-1. **Achievements**:
-   - Developed a scalable, efficient disease prediction system.
-   - Created actionable insights through visual analytics.
-2. **Future Work**:
-   - Incorporate real-time streaming data for predictions.
-   - Explore advanced deep learning models for higher accuracy.
-   - Enhance visualizations for interactive analysis.
+## 🛠️ **Tech Stack**
+- **Big Data**: Hadoop & HDFS 🗂️
+- **Processing**: PySpark 🔥
+- **Machine Learning**: Scikit-learn 🤖
+- **Visualization**: Matplotlib & Seaborn 🎨
 
 ---
 
-## Setup Instructions
-1. **Clone the Repository**:
+## 🗽️ **Pipeline Overview**
+
+🔹 **Data Source**: Input raw datasets into HDFS.  
+🔹 **Preprocessing**: Clean and encode features using PySpark.  
+🔹 **ML Training**: Build a predictive model using SGD Classifier.  
+🔹 **Prediction**: Use the trained model to predict diseases for unseen datasets.  
+🔹 **Analytics**: Generate insightful visualizations to explore trends and patterns.
+
+🌟 **Visual Overview**:  
+➡️ **Raw Data** ➡️ **HDFS** ➡️ **PySpark Processing** ➡️ **ML Training** ➡️ **Prediction & Insights** 🚀
+
+---
+
+## ⚙️ **How to Run the Project**
+
+### 💾 Prerequisites:
+1. 🔷 Python 3.8+  
+2. 🕉️ Required Libraries: 
    ```bash
-   git clone <repository_url>
-   cd <repository_directory>
+   pandas==1.5.3
+   numpy==1.24.1
+   scikit-learn==1.2.2
+   matplotlib==3.7.2
+   seaborn==0.12.2
+   pyspark==3.5.3
+
    ```
-2. **Install Dependencies**:
+3. 📂 Set up Hadoop & HDFS with PySpark integration.
+4. Get Dataset from https://drive.google.com/file/d/1I6EL5rz9W5zuoBp-2d9MjrkxUn2k1yt9/view?usp=drive_link
+
+### 🏁 Steps:
+1. **Clone this repository**:
    ```bash
-   pip install -r requirements.txt
+   git clone https://github.com/your-repo/disease-prediction
+   cd disease-prediction
    ```
-3. **Hadoop Setup**:
-   - Ensure HDFS is configured and running.
-   - Upload datasets to HDFS:
-     ```bash
-     hdfs dfs -put <local_path_to_dataset> <hdfs_path>
-     ```
-4. **Run Preprocessing and Model Training**:
-   - Submit the PySpark job:
-     ```bash
-     spark-submit --master yarn sgdregress.py
-     ```
-5. **Prediction**:
-   - Use the trained model for predictions:
-     ```bash
-     spark-submit --master yarn predict_disease.py
-     ```
-6. **Visualization**:
-   - Generate visualizations locally:
-     ```bash
-     python3 analysispic.py
-     ```
+
+2. **Preprocess the dataset**:
+   ```bash
+   spark-submit preprocess.py
+   ```
+
+3. **Train the ML model**:
+   ```bash
+   spark-submit train_model.py
+   ```
+
+4. **Make predictions on new data**:
+   ```bash
+   spark-submit predict.py --input new_data.csv --output predictions.csv
+   ```
+
+5. **Generate visual insights**:
+   ```bash
+   python analytics.py
+   ```
 
 ---
 
+## 🗊 **Analytics & Visual Insights**
 
+🌟 **Discover healthcare trends**:  
+1. **Age Group Analysis**: Compare disease frequency among age groups.  
+2. **City-wise Trends**: Identify hotspots for common illnesses.  
+3. **Gender-based Patterns**: Uncover gender-specific health insights.  
 
+🎉 **Example Outputs**: *(Sample placeholders below)*  
+```plaintext
+ 📈 Age vs Disease
+ 🔵 City Disease Distribution
+ 🔶 Gender Analysis Pie Chart
+```
+
+---
+
+## 🎯 **Challenges Faced**
+- **Overfitting**: Balanced by PCA and feature scaling.  
+- **Resource Constraints**: Optimized PySpark execution.  
+- **Integration**: Bridged Hadoop and ML workflows seamlessly.  
+
+---
+
+## 🌟 **Key Achievements**
+👉 Efficient disease prediction using SGD Classifier.  
+👉 Scalable Big Data pipeline with PySpark and HDFS.  
+👉 Stunning visual insights to aid healthcare decisions.  
+
+---
+
+## 🚀 **Future Scope**
+- **Enhancements**: Incorporate real-time data.  
+- **Deep Learning**: Leverage advanced architectures for higher accuracy.  
+- **Interactive Dashboards**: Build user-friendly visualization tools.  
+
+---
+
+**Made with ❤️ by Pratham Patel and Dev Vyas
